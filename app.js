@@ -4,7 +4,7 @@ const app = express()
 app.use(express.json());
 import { v4 as uuidv4 } from 'uuid';
 
-mongoose.connect('mongodb://localhost:27017/expenses').then(() => {
+mongoose.connect('mongodb+srv://samdanielvr:<db_pass>@cluster0.tju41.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => {
     console.log("MongoDBに接続しました！")
 })
 
