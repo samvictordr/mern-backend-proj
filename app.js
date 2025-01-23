@@ -1,12 +1,16 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import { v4 as uuidv4 } from 'uuid';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const app = express()
 app.use(express.json());
-import { v4 as uuidv4 } from 'uuid';
 
-mongoose.connect('mongodb+srv://samdanielvr:<db_pass>@cluster0.tju41.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => {
+mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log("MongoDBに接続しました！")
-})
+});
 
 const expenseSchema = new mongoose.Schema({
     id: { type: String, required: true, unique: true },
